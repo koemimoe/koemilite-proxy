@@ -1,0 +1,23 @@
+image: python:3.9-alpine
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+services:
+  - postgres:alpine
+
+cache:
+  paths:
+    - .cache/pip
+
+tests:
+  before_script:
+    - python -V
+    - apk --update add --no-cache build-base gcc libgcc libffi-dev openssl-dev git postgresql-client jpeg-dev openjpeg-dev zlib-dev freetype-dev lcms2-dev freetype-dev gifsicle libxml2 libxml2-dev libxslt libxslt-dev
+    - pip3 install pipenv wheel tox
+    - pipenv install --dev
+  script:
+    - ls
+    - cp config.ci.ini config.ini
+    - pipenv run pyflakes run.py mediaproxy tests
+    - pipenv run pytest tests

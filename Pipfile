@@ -1,0 +1,26 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+pyflakes = "*"
+pytest-asyncio = "*"
+pytest-cov = "*"
+black = "*"
+
+[packages]
+Quart = "==0.10.0"
+aiohttp = "*"
+logbook = "*"
+mmh3 = "*"
+pillow = "*"
+beautifulsoup4 = "*"
+lxml = "*"
+
+[requires]
+python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
