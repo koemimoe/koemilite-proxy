@@ -26,7 +26,7 @@ async def gen_embed(url: str):
     spotify_lurl = "https://accounts.spotify.com/api/token"
     sld = dict(grant_type="client_credentials")
     sdata = urllib.parse.urlencode(sld).encode("utf-8")
-    sreq = urllib.request.Request(spotify_lurl, headers={"Authorization": "Basic YWM3YThlOTcxY2M2NDkwOWFjN2VmZWM4M2ZiZTk2YjA6YTJhMmZlMDVkYTQyNGVmMGIwMjEzZDU2ODBhNDQ5Mjg="}, data=sdata)
+    sreq = urllib.request.Request(spotify_lurl, headers={"Authorization": "Basic token"}, data=sdata)
     sres = urllib.request.urlopen(sreq).read()
     spotify_login = json.loads(sres);
     

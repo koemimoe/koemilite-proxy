@@ -24,7 +24,7 @@ async def gen_embed(url: str) -> dict:
     tweet_id = match.group(1)
     tweet_url = f"https://api.twitter.com/2/tweets/{tweet_id}?expansions=attachments.media_keys,author_id&tweet.fields=attachments,author_id,id,created_at,text,public_metrics&media.fields=height,width,url,preview_image_url,type&user.fields=name,username,url,profile_image_url"
 
-    tweet_data = await fetch(tweet_url, json=True, headers={"Authorization": "Bearer AAAAAAAAAAAAAAAAAAAAAERjCQEAAAAASrbwd9qiQwqpq0rxDycwl2XRFL8%3DhxXe9SZGw2pFq5K74oNXlHgcN6SzG9uIUGw7PMTLVaeGEnfOly"})
+    tweet_data = await fetch(tweet_url, json=True, headers={"Authorization": "Bearer token"})
     
     tweet_uimg_meta = await embed_image(tweet_data["includes"]["users"][0]["profile_image_url"].replace("normal", "bigger"))
     tweet_fimg_meta = await embed_image("https://abs.twimg.com/icons/apple-touch-icon-192x192.png")
